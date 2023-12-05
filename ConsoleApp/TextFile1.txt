@@ -1,0 +1,11 @@
+﻿Uppgift: Skapa en applikation som hanterar anställda med Service Pattern och Interfaces
+
+Mål:
+Att utveckla förståelse för Service Pattern och interfaces i C# genom att skapa en applikation för hantering av anställdas information.
+
+
+Steg-för-Steg:
+Definiera en Anställd Klass: Employee Egenskaper: Id, Name, Position. En konstruktor för att initiera dessa egenskaper.
+Skapa ett Interface: IEmployeeService Definiera metoder som ska implementeras: AddEmployee, RemoveEmployee, UpdateEmployee, GetEmployee.
+Implementera Service Klassen: EmployeeService Implementera IEmployeeService. En lista för att lagra Employee-objekt och metoder enligt interfacet.
+Implementera Konsolinteraktion: Använda top-level statements för att hantera användarinteraktioner. Möjliggör läggande till, borttagning, uppdatering och visning av anställdas information.
