@@ -6,19 +6,19 @@ namespace ConsoleApp.Service
     {
         private readonly PersonService _personService = new PersonService();
 
-        public MenuService(PersonService personService)
-        {
-            _personService = personService;
-        }
-
         private void DisplayMainMenuOptions()
         {
-            Console.WriteLine("1. Add person");
-            Console.WriteLine("2. Remove person");
-            Console.WriteLine("3. Update person");
-            Console.WriteLine("4. Get all persons in the list");
-            Console.WriteLine("5. Get one persons detail information");
+            Console.Clear();
+            Console.WriteLine("Main Menu");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("1. Add Person");
+            Console.WriteLine("2. Remove Person");
+            Console.WriteLine("3. Update Person");
+            Console.WriteLine("4. Get All Persons");
+            Console.WriteLine("5. Get One Person's Detailed Information");
             Console.WriteLine("6. Exit");
+            Console.WriteLine("-------------------------------");
+            Console.Write("Enter your choice: ");
         }
 
         public void ShowMainMenu()
@@ -44,7 +44,7 @@ namespace ConsoleApp.Service
                         GetAllPersons();
                         break;
                     case "5":
-                        GetPersons();
+                        GetPersonDetails();
                         break;
                     case "6":
                         return;
@@ -54,55 +54,89 @@ namespace ConsoleApp.Service
                 }
 
                 Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
+                Console.ReadKey(true);
             }
         }
 
         private void AddPerson()
         {
-            var persons = _personService.GetPersons();
-            var person = GetPersonDetailsFromUser();
+            Console.WriteLine("Enter person email:");
+            var emailInput = Console.ReadLine();
 
-            var existingPerson = persons.FirstOrDefault(e => e.Email == person.Email);
-
+            var existingPerson = _personService.GetPerson(emailInput!);
             if (existingPerson != null)
             {
-                Console.WriteLine("An person with the same Email already exists. Please enter a different ID.");
+                Console.WriteLine("A person with the same email already exists.");
+                return;
             }
-            else
-            {
-                _personService.AddPerson(person);
-            }
+
+            var person = GetPersonDetailsFromUser(emailInput!);
+            _personService.AddPerson(person);
         }
+
+        private Person GetPersonDetailsFromUser(string email)
+        {
+            var person = new Person { Email = email };
+
+            Console.WriteLine("Enter person first name:");
+            person.FirstName = Console.ReadLine()!;
+
+            Console.WriteLine("Enter person last name:");
+            person.LastName = Console.ReadLine()!;
+
+            Console.WriteLine("Enter person street name:");
+            person.StreetName = Console.ReadLine()!;
+
+            Console.WriteLine("Enter person street number:");
+
+            person.StreetNumber = int.Parse(Console.ReadLine()!);
+
+            Console.WriteLine("Enter person zip code:");
+            person.ZipCode = int.Parse(Console.ReadLine()!);
+
+            Console.WriteLine("Enter person city:");
+            person.City = Console.ReadLine()!;
+
+            return person;
+        }
+
+
 
         private void RemovePerson()
         {
             Console.WriteLine("Enter person email to remove:");
-            string personEmailInput = Console.ReadLine();
+            string personEmailInput = Console.ReadLine()!;
 
-            var existingPerson = _personService.GetPerson(personEmailInput);
-
-            if (existingPerson == null)
+            if (!_personService.RemovePerson(personEmailInput))
             {
-                Console.WriteLine("Person with the provided email does not exist. Cannot remove.");
-                return;
+                Console.WriteLine("Person not found. Cannot remove.");
             }
-
-            _personService.RemovePerson(personEmailInput);
-
-            Console.WriteLine("Person removed successfully.");
+            else
+            {
+                Console.WriteLine("Person removed successfully.");
+            }
         }
 
         private void UpdatePerson()
         {
             Console.WriteLine("Enter person email to update:");
-            string personEmailInput = Console.ReadLine();
+            string personEmailInput = Console.ReadLine()!;
 
-            var person = GetPersonDetailsFromUser();
-            person.Email = personEmailInput;
-            _personService.UpdatePerson(person);
+            var person = _personService.GetPerson(personEmailInput);
+
+            if (person == null)
+            {
+                Console.WriteLine("Person not found. Cannot update.");
+                return;
+            }
+
+            var updatedPerson = GetPersonDetailsFromUser();
+            updatedPerson.Email = personEmailInput;
+
+            _personService.UpdatePerson(updatedPerson);
             Console.WriteLine("Person updated successfully.");
         }
+
 
         private void GetAllPersons()
         {
@@ -113,10 +147,10 @@ namespace ConsoleApp.Service
             }
         }
 
-        private void GetPersons()
+        private void GetPersonDetails()
         {
             Console.WriteLine("Enter person email:");
-            string emailInput = Console.ReadLine();
+            string emailInput = Console.ReadLine()!;
 
             var result = _personService.GetPerson(emailInput);
 
@@ -134,33 +168,59 @@ namespace ConsoleApp.Service
         {
             var person = new Person();
             Console.WriteLine("Enter person email:");
-            person.Email = Console.ReadLine();
+            person.Email = Console.ReadLine()!;
 
             Console.WriteLine("Enter person first name:");
-            person.FirstName = Console.ReadLine();
+            person.FirstName = Console.ReadLine()!;
 
             Console.WriteLine("Enter person last name:");
-            person.LastName = Console.ReadLine();
+            person.LastName = Console.ReadLine()!;
 
             Console.WriteLine("Enter person street name:");
-            person.StreetName = Console.ReadLine();
+            person.StreetName = Console.ReadLine()!;
 
             Console.WriteLine("Enter person street number:");
-            
-            person.StreetNumber = int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int streetNumber))
+            {
+                person.StreetNumber = streetNumber;
+            }
+            else
+            {
+                Console.WriteLine("Invalid street number. Please enter a valid number.");
+            }
 
             Console.WriteLine("Enter person zip code:");
-            person.ZipCode = int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int zipCode))
+            {
+                person.ZipCode = zipCode;
+            }
+            else
+            {
+                Console.WriteLine("Invalid zip code. Please enter a valid number.");
+            }
 
             Console.WriteLine("Enter person city:");
-            person.City = Console.ReadLine();
+            person.City = Console.ReadLine()!;
 
             return person;
         }
 
         private void DisplayPersonInformation(Person person)
-        {
-            Console.WriteLine($"Person Information:\nEmail: {person.Email}\nFirst name: {person.FirstName}\nLast name: {person.LastName}\nStreeat name: {person.StreetName}\nStreeat number: {person.StreetNumber}\nZip code: {person.ZipCode}\nCity: {person.City}\n");
+        {   
+            Console.WriteLine("\n");
+            Console.WriteLine($"Person Information:\n----------------------------------");
+            Console.WriteLine($"Email: {person.Email}");
+            Console.WriteLine($"First Name: {person.FirstName}");
+            Console.WriteLine($"Last Name: {person.LastName}");
+            Console.WriteLine($"Address:\n\tStreet Name: {person.StreetName}");
+            Console.WriteLine($"\tStreet Number: {person.StreetNumber}");
+            Console.WriteLine($"\tZip Code: {person.ZipCode}");
+            Console.WriteLine($"\tCity: {person.City}");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("\n");
         }
+
+
+
     }
 }

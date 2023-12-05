@@ -1,7 +1,7 @@
-﻿using System;
+﻿// PersonService
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using ConsoleApp.Interface;
 using ConsoleApp.Services;
 using Newtonsoft.Json;
@@ -15,38 +15,31 @@ namespace ConsoleApp.Service
 
         public PersonService()
         {
-            LoadPersonsFromJsonFile();
+            _persons = InitializePersons();
         }
 
-        private void LoadPersonsFromJsonFile()
+        private List<Person> InitializePersons()
         {
             try
             {
                 var content = _fileService.GetContentFromFile();
-                _persons = string.IsNullOrEmpty(content) ? new List<Person>() : JsonConvert.DeserializeObject<List<Person>>(content);
+                return JsonConvert.DeserializeObject<List<Person>>(content) ?? new List<Person>();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                _persons = new List<Person>();
+                return new List<Person>();
             }
         }
+
 
         public void AddPerson(Person person)
         {
-            try
-            {
-                if (_persons.Any(e => e.Email == person.Email))
-                    throw new InvalidOperationException("A person with the same email already exists.");
-
-                _persons.Add(person);
-                SavePersonsToJsonFile();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+            _persons.Add(person);
+            SavePersonsToJsonFile();
         }
+
+
 
         public bool RemovePerson(string email)
         {
@@ -58,9 +51,9 @@ namespace ConsoleApp.Service
                 return true;
             }
 
-            Console.WriteLine("Error, try again");
             return false;
         }
+
 
         public void UpdatePerson(Person person)
         {
@@ -83,18 +76,7 @@ namespace ConsoleApp.Service
 
         public List<Person> GetPersons() => _persons;
 
-        public Person GetPerson(string email)
-        {
-            try
-            {
-                return _persons.FirstOrDefault(e => e.Email == email);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                return null;
-            }
-        }
+        public Person GetPerson(string email) => _persons.FirstOrDefault(e => e.Email == email)!;
 
         public List<Person> GetPerson() => _persons;
 
