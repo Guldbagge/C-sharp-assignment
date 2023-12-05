@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -25,10 +23,7 @@ namespace ConsoleApp.Services
         {
             try
             {
-                using (var sw = new StreamWriter(_filePath))
-                {
-                    sw.WriteLine(content);
-                }
+                File.WriteAllText(_filePath, content);
                 return true;
             }
             catch (Exception ex)
@@ -42,17 +37,7 @@ namespace ConsoleApp.Services
         {
             try
             {
-                if (File.Exists(_filePath))
-                {
-                    using (var sr = new StreamReader(_filePath))
-                    {
-                        return sr.ReadToEnd();
-                    }
-                }
-                else
-                {
-                    return string.Empty; // Om filen inte finns returneras en tom sträng
-                }
+                return File.Exists(_filePath) ? File.ReadAllText(_filePath) : string.Empty;
             }
             catch (Exception ex)
             {

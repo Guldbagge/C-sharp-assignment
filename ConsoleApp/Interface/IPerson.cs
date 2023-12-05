@@ -1,6 +1,10 @@
 ﻿public interface IPerson
 {
-    int Id { get; set; }
-    string Name { get; set; }
-    string Position { get; set; }
+    string Email { get; set; }
+    string FirstName { get; set; }
+    string LastName { get; set; }
+    string StreetName { get; set; }
+    int StreetNumber { get; set; }
+    int ZipCode { get; set; }
+    string City { get; set; }
 }

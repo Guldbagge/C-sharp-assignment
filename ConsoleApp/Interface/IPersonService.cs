@@ -3,9 +3,9 @@
     public interface IPersonService
     {
         void AddPerson(Person person);
-        Person GetPerson(int id);
-        List<Person> GetPerson();
-        bool RemovePerson(int id);
+        Person GetPerson(string email);
+        List<Person> GetPersons();
+        bool RemovePerson(string email);
         void UpdatePerson(Person person);
     }
 }
