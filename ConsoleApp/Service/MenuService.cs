@@ -4,21 +4,21 @@ namespace ConsoleApp.Service
 {
     public class MenuService
     {
-        // En instans av EmployeeService används för att hantera anställda
-        private readonly EmployeeService _employeeService = new EmployeeService();
+        // En instans av personService används för att hantera anställda
+        private readonly PersonService _personService = new PersonService();
 
-        public MenuService(EmployeeService employeeService)
+        public MenuService(PersonService personService)
         {
-            _employeeService = employeeService;
+            _personService = personService;
         }
 
         // Visar huvudmenyvalen
         private void DisplayMainMenuOptions()
         {
-            Console.WriteLine("1. Add employee");
-            Console.WriteLine("2. Remove employee");
-            Console.WriteLine("3. Update employee");
-            Console.WriteLine("4. Get employees");
+            Console.WriteLine("1. Add person");
+            Console.WriteLine("2. Remove person");
+            Console.WriteLine("3. Update person");
+            Console.WriteLine("4. Get persons");
             Console.WriteLine("5. Exit");
         }
 
@@ -34,16 +34,16 @@ namespace ConsoleApp.Service
                 switch (option)
                 {
                     case "1":
-                        AddEmployee(); // Lägger till en ny anställd
+                        AddPerson(); // Lägger till en ny anställd
                         break;
                     case "2":
-                        RemoveEmployee(); // Tar bort en anställd
+                        RemovePerson(); // Tar bort en anställd
                         break;
                     case "3":
-                        UpdateEmployee(); // Uppdaterar anställdsinformation
+                        UpdatePerson(); // Uppdaterar anställdsinformation
                         break;
                     case "4":
-                        GetEmployees(); // Hämtar information om anställda
+                        GetPersons(); // Hämtar information om anställda
                         break;
                     case "5":
                         return; // Avslutar programmet
@@ -59,104 +59,104 @@ namespace ConsoleApp.Service
 
 
         // Lägger till en ny anställd
-        //private void AddEmployee()
+        //private void Addperson()
         //{
-        //    var employee = GetEmployeeDetailsFromUser(); // Hämtar detaljer om en ny anställd från användaren
-        //    _employeeService.AddEmployee(employee); // Lägger till den nya anställde i systemet
+        //    var person = GetpersonDetailsFromUser(); // Hämtar detaljer om en ny anställd från användaren
+        //    _personService.Addperson(person); // Lägger till den nya anställde i systemet
         //}
 
-        private void AddEmployee()
+        private void AddPerson()
         {
-            var employees = _employeeService.GetEmployees(); // Hämtar befintliga anställda
-            var employee = GetEmployeeDetailsFromUser(); // Hämtar detaljer om en ny anställd från användaren
+            var persons = _personService.GetPersons(); // Hämtar befintliga anställda
+            var person = GetPersonDetailsFromUser(); // Hämtar detaljer om en ny anställd från användaren
 
-            var existingEmployee = employees.FirstOrDefault(e => e.Id == employee.Id); // Kontrollera om det angivna ID:t redan finns
+            var existingPerson = persons.FirstOrDefault(e => e.Id == person.Id); // Kontrollera om det angivna ID:t redan finns
 
-            if (existingEmployee != null)
+            if (existingPerson != null)
             {
-                Console.WriteLine("An employee with the same ID already exists. Please enter a different ID.");
+                Console.WriteLine("An person with the same ID already exists. Please enter a different ID.");
             }
             else
             {
-                _employeeService.AddEmployee(employee); // Lägger till den nya anställde i systemet
+                _personService.AddPerson(person); // Lägger till den nya anställde i systemet
             }
         }
 
 
         // Tar bort en anställd
-        private void RemoveEmployee()
+        private void RemovePerson()
         {
-            Console.WriteLine("Enter employee ID to remove:");
-            if (int.TryParse(Console.ReadLine(), out int employeeId))
+            Console.WriteLine("Enter person ID to remove:");
+            if (int.TryParse(Console.ReadLine(), out int personId))
             {
-                var success = _employeeService.RemoveEmployee(employeeId); // Försöker ta bort den anställde baserat på ID
-                Console.WriteLine(success ? "Employee removed successfully." : "Employee could not be removed.");
+                var success = _personService.RemovePerson(personId); // Försöker ta bort den anställde baserat på ID
+                Console.WriteLine(success ? "Person removed successfully." : "Person could not be removed.");
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid employee ID.");
+                Console.WriteLine("Invalid input. Please enter a valid person ID.");
             }
         }
 
         // Uppdaterar information om en anställd
-        private void UpdateEmployee()
+        private void UpdatePerson()
         {
-            Console.WriteLine("Enter employee ID to update:");
-            if (int.TryParse(Console.ReadLine(), out int employeeId))
+            Console.WriteLine("Enter person ID to update:");
+            if (int.TryParse(Console.ReadLine(), out int personId))
             {
-                var employee = GetEmployeeDetailsFromUser(); // Hämtar nya detaljer för att uppdatera den anställde
-                employee.Id = employeeId; // Sätter ID för den anställde som ska uppdateras
-                _employeeService.UpdateEmployee(employee); // Uppdaterar den anställde
-                Console.WriteLine("Employee updated successfully.");
+                var person = GetPersonDetailsFromUser(); // Hämtar nya detaljer för att uppdatera den anställde
+                person.Id = personId; // Sätter ID för den anställde som ska uppdateras
+                _personService.UpdatePerson(person); // Uppdaterar den anställde
+                Console.WriteLine("Person updated successfully.");
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid employee ID.");
+                Console.WriteLine("Invalid input. Please enter a valid person ID.");
             }
         }
 
         // Hämtar information om anställda
-        private void GetEmployees()
+        private void GetPersons()
         {
-            Console.WriteLine("Enter employee ID:");
+            Console.WriteLine("Enter person ID:");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                var result = _employeeService.GetEmployee(id); // Hämtar den anställde baserat på ID
+                var result = _personService.GetPerson(id); // Hämtar den anställde baserat på ID
                 if (result != null)
                 {
-                    DisplayEmployeeInformation(result); // Visar information om den anställde
+                    DisplayPersonInformation(result); // Visar information om den anställde
                 }
                 else
                 {
-                    Console.WriteLine("Employee not found.");
+                    Console.WriteLine("Person not found.");
                 }
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter a valid employee ID.");
+                Console.WriteLine("Invalid input. Please enter a valid person ID.");
             }
         }
 
         // Hämtar information från användaren för att skapa en ny anställd
-        private Employee GetEmployeeDetailsFromUser()
+        private Person GetPersonDetailsFromUser()
         {
-            var employee = new Employee();
-            Console.WriteLine("Enter employee ID:");
-            employee.Id = Convert.ToInt32(Console.ReadLine());
+            var person = new Person();
+            Console.WriteLine("Enter person ID:");
+            person.Id = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Enter employee Name:");
-            employee.Name = Console.ReadLine();
+            Console.WriteLine("Enter person Name:");
+            person.Name = Console.ReadLine();
 
-            Console.WriteLine("Enter employee position:");
-            employee.Position = Console.ReadLine();
+            Console.WriteLine("Enter person position:");
+            person.Position = Console.ReadLine();
 
-            return employee;
+            return person;
         }
 
         // Visar information om en specifik anställd
-        private void DisplayEmployeeInformation(Employee employee)
+        private void DisplayPersonInformation(Person person)
         {
-            Console.WriteLine($"Employee Information:\nID: {employee.Id}\nName: {employee.Name}\nPosition: {employee.Position}\n");
+            Console.WriteLine($"Person Information:\nID: {person.Id}\nName: {person.Name}\nPosition: {person.Position}\n");
         }
     }
 }

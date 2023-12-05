@@ -8,25 +8,25 @@ using Newtonsoft.Json;
 
 namespace ConsoleApp.Service
 {
-    public class EmployeeService : IEmployeeService
+    public class PersonService : IPersonService
     {
-        private readonly FileService _fileService = new FileService(@"C:\Education\EmployeeCleanDependencyInjection\content.json");
-        private readonly List<Employee> _employees = new List<Employee>();
+        private readonly FileService _fileService = new FileService(@"C:\Education\C-sharp-assignment\content.json");
+        private readonly List<Person> _persons = new List<Person>();
 
-        public EmployeeService()
+        public PersonService()
         {
-            LoadEmployeesFromJsonFile();
+            LoadPersonsFromJsonFile();
         }
 
-        private void LoadEmployeesFromJsonFile()
+        private void LoadPersonsFromJsonFile()
         {
             try
             {
                 var content = _fileService.GetContentFromFile();
                 if (!string.IsNullOrEmpty(content))
                 {
-                    _employees.Clear();
-                    _employees.AddRange(JsonConvert.DeserializeObject<List<Employee>>(content));
+                    _persons.Clear();
+                    _persons.AddRange(JsonConvert.DeserializeObject<List<Person>>(content));
                 }
             }
             catch (Exception ex)
@@ -35,23 +35,23 @@ namespace ConsoleApp.Service
             }
         }
 
-        public void AddEmployee(Employee employee)
+        public void AddPerson(Person person)
         {
             try
             {
-                LoadEmployeesFromJsonFile(); // Ladda anställda från filen för att säkerställa aktuell data
+                LoadPersonsFromJsonFile(); // Ladda anställda från filen för att säkerställa aktuell data
 
-                Debug.WriteLine($"Trying to add employee with ID: {employee.Id}");
+                Debug.WriteLine($"Trying to add person with ID: {person.Id}");
 
-                if (!_employees.Any(e => e.Id == employee.Id))
+                if (!_persons.Any(e => e.Id == person.Id))
                 {
-                    _employees.Add(employee);
-                    _fileService.SaveContentToFile(JsonConvert.SerializeObject(_employees));
-                    Debug.WriteLine("Employee added successfully!");
+                    _persons.Add(person);
+                    _fileService.SaveContentToFile(JsonConvert.SerializeObject(_persons));
+                    Debug.WriteLine("Person added successfully!");
                 }
                 else
                 {
-                    throw new InvalidOperationException("An employee with the same ID already exists.");
+                    throw new InvalidOperationException("An person with the same ID already exists.");
                 }
             }
             catch (Exception ex)
@@ -61,12 +61,12 @@ namespace ConsoleApp.Service
         }
 
 
-        public bool RemoveEmployee(int id)
+        public bool RemovePerson(int id)
         {
-            var employee = _employees.FirstOrDefault(x => x.Id == id);
-            if (employee != null)
+            var person = _persons.FirstOrDefault(x => x.Id == id);
+            if (person != null)
             {
-                _employees.Remove(employee);
+                _persons.Remove(person);
                 return true;
             }
 
@@ -74,20 +74,20 @@ namespace ConsoleApp.Service
             return false;
         }
 
-        public void UpdateEmployee(Employee employee)
+        public void UpdatePerson(Person person)
         {
-            var existingEmployee = _employees.FirstOrDefault(x => x.Id == employee.Id);
-            existingEmployee?.UpdateDetails(employee);
+            var existingPerson = _persons.FirstOrDefault(x => x.Id == person.Id);
+            existingPerson?.UpdateDetails(person);
         }
 
-        public List<Employee> GetEmployees() => _employees;
+        public List<Person> GetPersons() => _persons;
 
-        public Employee GetEmployee(int id)
+        public Person GetPerson(int id)
         {
             try
             {
-                var employee = _employees.FirstOrDefault(e => e.Id == id);
-                return employee;
+                var person = _persons.FirstOrDefault(e => e.Id == id);
+                return person;
             }
             catch (Exception ex)
             {
@@ -95,14 +95,24 @@ namespace ConsoleApp.Service
             }
             return null;
         }
+
+        Person IPersonService.GetPerson(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Person> GetPerson()
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    public static class EmployeeExtensions
+    public static class PersonExtensions
     {
-        public static void UpdateDetails(this Employee existingEmployee, Employee newEmployee)
+        public static void UpdateDetails(this Person existingPerson, Person newPerson)
         {
-            existingEmployee.Name = newEmployee.Name;
-            existingEmployee.Position = newEmployee.Position;
+            existingPerson.Name = newPerson.Name;
+            existingPerson.Position = newPerson.Position;
         }
     }
 }
