@@ -13,7 +13,7 @@ using ConsoleApp.Interface;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(service =>
 {
-    service.AddSingleton<EmployeeService>();
+    service.AddSingleton<PersonService>();
     service.AddSingleton<MenuService>();
 }).Build();
 
