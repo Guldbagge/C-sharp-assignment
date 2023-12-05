@@ -14,7 +14,7 @@ namespace ConsoleApp.Service
             Console.WriteLine("1. Add Person");
             Console.WriteLine("2. Remove Person");
             Console.WriteLine("3. Update Person");
-            Console.WriteLine("4. Get All Persons");
+            Console.WriteLine("4. Get All Persons, Only Name");
             Console.WriteLine("5. Get One Person's Detailed Information");
             Console.WriteLine("6. Exit");
             Console.WriteLine("-------------------------------");
@@ -101,7 +101,6 @@ namespace ConsoleApp.Service
         }
 
 
-
         private void RemovePerson()
         {
             Console.WriteLine("Enter person email to remove:");
@@ -141,10 +140,17 @@ namespace ConsoleApp.Service
         private void GetAllPersons()
         {
             var persons = _personService.GetPersons();
+            Console.Clear();
             foreach (var person in persons)
             {
-                DisplayPersonInformation(person);
+                DisplayPersonName(person);
             }
+        }
+
+        private void DisplayPersonName(Person person)
+        {
+            Console.WriteLine($"{person.FirstName} {person.LastName}");
+            Console.WriteLine("----------------------------------");
         }
 
         private void GetPersonDetails()
