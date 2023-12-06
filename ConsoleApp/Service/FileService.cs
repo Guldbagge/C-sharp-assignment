@@ -1,25 +1,24 @@
-﻿// Interface defining file service functionalities
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace ConsoleApp.Services
 {
     public interface IFileService
     {
-        bool SaveContentToFile(string content); // Save content to file
-        string GetContentFromFile(); // Retrieve content from file
+        bool SaveContentToFile(string content); 
+        string GetContentFromFile(); 
     }
 
     // Implementation of file service interface
     public class FileService : IFileService
     {
-        private readonly string _filePath; // File path
+        private readonly string _filePath;
 
         public FileService(string filePath) // Constructor setting file path
         {
             _filePath = filePath;
         }
 
-        public bool SaveContentToFile(string content) // Save content to file
+        public bool SaveContentToFile(string content)
         {
             try
             {
@@ -28,7 +27,7 @@ namespace ConsoleApp.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message); // Log any exceptions
+                Debug.WriteLine(ex.Message); 
                 return false;
             }
         }
@@ -41,7 +40,7 @@ namespace ConsoleApp.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message); // Log any exceptions
+                Debug.WriteLine(ex.Message); 
                 return string.Empty;
             }
         }

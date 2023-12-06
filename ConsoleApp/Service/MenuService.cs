@@ -4,6 +4,7 @@ namespace ConsoleApp.Service
 {
     public class MenuService
     {
+        // PersonService instance to handle person-related functionalities
         private readonly PersonService _personService = new PersonService();
 
         private void DisplayMainMenuOptions()
@@ -59,8 +60,9 @@ namespace ConsoleApp.Service
         }
 
         private void AddPerson()
-        {
-            var newPerson = GetPersonDetailsFromUser(null);
+
+        {   // Adds a new person after taking user input
+            var newPerson = GetPersonDetailsFromUser(null!);
 
             if (newPerson != null)
             {
@@ -98,6 +100,7 @@ namespace ConsoleApp.Service
 
         private void UpdatePersonEmail(Person person)
         {
+            // Helper method to update a person's email
             Console.WriteLine("Enter new person email:");
             var newEmail = Console.ReadLine();
             if (!string.IsNullOrEmpty(newEmail))
@@ -108,6 +111,7 @@ namespace ConsoleApp.Service
 
         private void UpdatePersonDetails(Person person)
         {
+            // Helper method to update a person's details
             Console.WriteLine("Enter person first name:");
             person.FirstName = Console.ReadLine()!;
 
@@ -152,12 +156,6 @@ namespace ConsoleApp.Service
             }
         }
 
-        private void DisplayPersonName(Person person)
-        {
-            Console.WriteLine($"{person.FirstName} {person.LastName}");
-            Console.WriteLine("----------------------------------");
-        }
-
         private void GetPersonDetails()
         {
             Console.WriteLine("Enter person email:");
@@ -176,7 +174,8 @@ namespace ConsoleApp.Service
         }
 
         private static Person GetPersonDetailsFromUser(string email)
-        {
+        {   
+            // Helper method to get person details from user input
             var person = new Person();
 
             if (string.IsNullOrEmpty(email))
@@ -224,6 +223,12 @@ namespace ConsoleApp.Service
             Console.WriteLine($"\tCity: {person.City}");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\n");
+        }
+
+        private void DisplayPersonName(Person person)
+        {
+            Console.WriteLine($"{person.FirstName} {person.LastName}");
+            Console.WriteLine("----------------------------------");
         }
     }
 }
