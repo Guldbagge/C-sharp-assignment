@@ -64,12 +64,44 @@ namespace ConsoleApp.Service
         }
 
         // Updates a person's details in the collection and saves changes to the file
-        public void UpdatePerson(Person person)
+
+        public void UpdatePerson(Person updatedPerson)
         {
-            var existingPerson = _persons.FirstOrDefault(x => x.Email == person.Email);
-            existingPerson?.UpdateDetails(person);
-            SavePersonsToJsonFile();
+            var existingPerson = _persons.FirstOrDefault(x => x.Email == updatedPerson.Email);
+            if (existingPerson != null)
+            {
+                var isEmailTaken = _persons.Any(p => p.Email == updatedPerson.Email && p != existingPerson);
+
+                if (!isEmailTaken || updatedPerson.Email == existingPerson.Email)
+                {
+                    // Update details including email
+                    existingPerson.Email = updatedPerson.Email;
+                    existingPerson.FirstName = updatedPerson.FirstName;
+                    existingPerson.LastName = updatedPerson.LastName;
+                    existingPerson.StreetName = updatedPerson.StreetName;
+                    existingPerson.StreetNumber = updatedPerson.StreetNumber;
+                    existingPerson.ZipCode = updatedPerson.ZipCode;
+                    existingPerson.City = updatedPerson.City;
+
+                    Debug.WriteLine("Person details updated. Saving changes to JSON file...");
+                    SavePersonsToJsonFile(); // Save changes to JSON file
+
+                    // Log successful update
+                    Debug.WriteLine($"Person details updated: {existingPerson.Email}");
+                }
+                else
+                {
+                    Debug.WriteLine("The new email is already in use by another person.");
+                    // Handle case where the new email is already taken by another person
+                }
+            }
+            else
+            {
+                // Log when the person to update is not found
+                Debug.WriteLine($"Person not found: {updatedPerson.Email}. Cannot update.");
+            }
         }
+
 
         // Saves the collection of Persons to a JSON file
         private void SavePersonsToJsonFile()
@@ -87,18 +119,18 @@ namespace ConsoleApp.Service
     }
 
     // Extension method for updating Person details
-    public static class PersonExtensions
-    {
-        public static void UpdateDetails(this Person existingPerson, Person newPerson)
-        {
-            // Updates existing Person's details with new information
-            existingPerson.Email = newPerson.Email;
-            existingPerson.FirstName = newPerson.FirstName;
-            existingPerson.LastName = newPerson.LastName;
-            existingPerson.StreetName = newPerson.StreetName;
-            existingPerson.StreetNumber = newPerson.StreetNumber;
-            existingPerson.ZipCode = newPerson.ZipCode;
-            existingPerson.City = newPerson.City;
-        }
-    }
+    //public static class PersonExtensions
+    //{
+    //    public static void UpdateDetails(this Person existingPerson, Person newPerson)
+    //    {
+    //        // Updates existing Person's details with new information
+    //        existingPerson.Email = newPerson.Email;
+    //        existingPerson.FirstName = newPerson.FirstName;
+    //        existingPerson.LastName = newPerson.LastName;
+    //        existingPerson.StreetName = newPerson.StreetName;
+    //        existingPerson.StreetNumber = newPerson.StreetNumber;
+    //        existingPerson.ZipCode = newPerson.ZipCode;
+    //        existingPerson.City = newPerson.City;
+    //    }
+    //}
 }
