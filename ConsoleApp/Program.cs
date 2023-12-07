@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting; 
 using ConsoleApp.Service; 
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Service;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(service =>
 {
@@ -11,6 +12,6 @@ var builder = Host.CreateDefaultBuilder().ConfigureServices(service =>
 builder.Start(); 
 Console.Clear(); 
 
-var menuService = builder.Services.GetRequiredService<MenuService>(); // Get MenuService from services
+var menuService = builder.Services.GetRequiredService<MenuService>();
 
 menuService.ShowMainMenu(); 

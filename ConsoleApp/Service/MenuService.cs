@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Shared.Service;
+using System;
 
 namespace ConsoleApp.Service
 {
     public class MenuService
     {
-        // PersonService instance to handle person-related functionalities
         private readonly PersonService _personService = new PersonService();
 
         private void DisplayMainMenuOptions()
@@ -60,8 +60,7 @@ namespace ConsoleApp.Service
         }
 
         private void AddPerson()
-
-        {   // Adds a new person after taking user input
+        {
             var newPerson = GetPersonDetailsFromUser(null!);
 
             if (newPerson != null)
@@ -100,7 +99,6 @@ namespace ConsoleApp.Service
 
         private void UpdatePersonEmail(Person person)
         {
-            // Helper method to update a person's email
             Console.WriteLine("Enter new person email:");
             var newEmail = Console.ReadLine();
             if (!string.IsNullOrEmpty(newEmail))
@@ -111,7 +109,6 @@ namespace ConsoleApp.Service
 
         private void UpdatePersonDetails(Person person)
         {
-            // Helper method to update a person's details
             Console.WriteLine("Enter person first name:");
             person.FirstName = Console.ReadLine()!;
 
@@ -174,8 +171,7 @@ namespace ConsoleApp.Service
         }
 
         private static Person GetPersonDetailsFromUser(string email)
-        {   
-            // Helper method to get person details from user input
+        {
             var person = new Person();
 
             if (string.IsNullOrEmpty(email))
@@ -185,7 +181,6 @@ namespace ConsoleApp.Service
             }
             else
             {
-                // If an email was passed, use it directly
                 person.Email = email;
             }
 
