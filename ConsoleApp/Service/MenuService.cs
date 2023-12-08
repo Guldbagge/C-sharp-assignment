@@ -96,7 +96,7 @@ namespace ConsoleApp.Service
             Console.WriteLine("Person details updated successfully.");
         }
 
-        private void UpdatePersonEmail(Person person)
+        private void UpdatePersonEmail(Person person) //If I didn't use a separate method for the email person didn't uppdate correctly.  
         {
             Console.WriteLine("Enter new person email:");
             var newEmail = Console.ReadLine();
