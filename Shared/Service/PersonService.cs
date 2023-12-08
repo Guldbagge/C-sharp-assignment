@@ -1,9 +1,9 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using Shared.Interface;
+using Shared.Service;
 
-namespace Shared.Service
+namespace ConsoleApp.Service
 {
     public class PersonService : IPersonService
     {

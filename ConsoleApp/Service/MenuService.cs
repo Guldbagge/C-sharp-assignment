@@ -1,5 +1,4 @@
-﻿using Shared.Service;
-using System;
+﻿using System;
 
 namespace ConsoleApp.Service
 {

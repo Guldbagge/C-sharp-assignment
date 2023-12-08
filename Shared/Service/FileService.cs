@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-
 namespace Shared.Service
 {
     public interface IFileService
