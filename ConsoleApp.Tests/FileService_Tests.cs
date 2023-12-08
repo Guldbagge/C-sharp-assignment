@@ -1,4 +1,4 @@
-﻿using ConsoleApp.Services;
+﻿using Shared.Service;
 using System;
 using Xunit;
 

@@ -60,7 +60,7 @@ namespace ConsoleApp.Service
 
         private void AddPerson()
         {
-            var newPerson = GetPersonDetailsFromUser(null);
+            var newPerson = GetPersonDetailsFromUser(null!);
 
             if (newPerson != null)
             {
@@ -152,12 +152,6 @@ namespace ConsoleApp.Service
             }
         }
 
-        private void DisplayPersonName(Person person)
-        {
-            Console.WriteLine($"{person.FirstName} {person.LastName}");
-            Console.WriteLine("----------------------------------");
-        }
-
         private void GetPersonDetails()
         {
             Console.WriteLine("Enter person email:");
@@ -186,7 +180,6 @@ namespace ConsoleApp.Service
             }
             else
             {
-                // If an email was passed, use it directly
                 person.Email = email;
             }
 
@@ -224,6 +217,12 @@ namespace ConsoleApp.Service
             Console.WriteLine($"\tCity: {person.City}");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\n");
+        }
+
+        private void DisplayPersonName(Person person)
+        {
+            Console.WriteLine($"{person.FirstName} {person.LastName}");
+            Console.WriteLine("----------------------------------");
         }
     }
 }
