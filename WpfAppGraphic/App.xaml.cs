@@ -1,14 +1,40 @@
-﻿using System.Configuration;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Configuration;
 using System.Data;
 using System.Windows;
+using WpfAppGraphic.ViewModels;
+using WpfAppGraphic.Views;
 
-namespace WpfAppGraphic
+namespace WpfAppGraphic;
+
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    private IHost? _host;
+
+    public App()
     {
+        _host = Host.CreateDefaultBuilder()
+            .ConfigureServices(services =>
+            {
+              
+                services.AddSingleton<MainWindow>();
+                services.AddSingleton<MainViewModel>();
+                services.AddSingleton<DisplayMainOptionsModel>();
+                services.AddSingleton<DisplayMainOptions>();
+                services.AddSingleton<DisplayAddModel>();
+                services.AddSingleton<DisplayAdd>();
+            })
+            .Build();
     }
 
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+
+        _host?.Start();
+
+        var mainWindow = _host!.Services.GetRequiredService<MainWindow>();
+        mainWindow.Show();
+    }
 }
