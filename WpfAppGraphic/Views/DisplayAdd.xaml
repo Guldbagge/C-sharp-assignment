@@ -11,11 +11,58 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <StackPanel>
-            <Label Content="New Product"/>
-            <Button Content="Navigate to Product List " Command="{Binding NavigateToListCommand}"/>
+    <Grid Margin ="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="0" Margin="0,0,0,30">
+            <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
+            <Label Content="Enter person email"/>
+            <TextBox Text="{Binding CustomerForm.Email}" Padding="2,5" />
+            <Label Content="Enter person first name"/>
+            <TextBox Text="{Binding CustomerForm.FirstName}" Padding="0,5" />
+            <Label Content="Enter person last name"/>
+            <TextBox Text="{Binding CustomerForm.LastName}" Padding="0,5" />
+            <Label Content="Enter person street name"/>
+            <TextBox Text="{Binding CustomerForm.StreetName}" Padding="0,5" />
+            <Label Content="Enter person street number"/>
+            <TextBox Text="{Binding CustomerForm.StreetNumber}" Padding="0,5" />
+            <Label Content="Enter person zip code"/>
+            <TextBox Text="{Binding CustomerForm.ZipCode}" Padding="0,5" />
+            <Label Content="Enter person city"/>
+            <TextBox Text="{Binding CustomerForm.City}" Padding="0,5" />
+            <Button Content="Add Customer" Command="{Binding AddCustomerToListCommand}" Padding="0,5" Margin="0,30" />
         </StackPanel>
+
+        <!--<ListView Grid.Row="1" ItemsSource="{Binding CustomerList}" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="2, 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding CompanyName}" />
+                            <TextBlock Text="{Binding ContactPerson}" FontSize="10"/>
+                        </StackPanel>
+
+                        <Button Command="{Binding DataContext.RemoveCustomerFromListCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                CommandParameter="{Binding}"
+                                Grid.Column="1"
+                                Content="x"
+                                Width="21"
+                                Height="20" 
+                        />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+
     </Grid>
+
 </UserControl>
