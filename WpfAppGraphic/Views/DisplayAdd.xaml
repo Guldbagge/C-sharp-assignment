@@ -7,7 +7,7 @@
              
              xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
             
-             d:DataContext="{d:DesignInstance Type=views:DisplayAddModel}"
+             d:DataContext="{d:DesignInstance Type=views:DisplayAddViewModel}"
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">

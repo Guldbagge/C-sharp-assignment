@@ -20,7 +20,7 @@ public partial class MainViewModel : ObservableObject
     {
 
         _sp = sp;
-        CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsModel>();
+        CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
 
     }
 }

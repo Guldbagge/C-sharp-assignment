@@ -10,11 +10,11 @@ using WpfAppGraphic.ViewModels;
 
 namespace WpfAppGraphic.ViewModels;
 
-public partial class DisplayMainOptionsModel : ObservableObject
+public partial class DisplayMainOptionsViewModel : ObservableObject
 {
 private readonly IServiceProvider _sp;
 
-public DisplayMainOptionsModel(IServiceProvider sp)
+public DisplayMainOptionsViewModel(IServiceProvider sp)
 {
     _sp = sp;
 }
@@ -23,6 +23,6 @@ public DisplayMainOptionsModel(IServiceProvider sp)
 private void NavigateToAdd()
 {
     var mainViewModel = _sp.GetRequiredService<MainViewModel>();
-    mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsModel>();
+    mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayAddViewModel>();
 }
 }

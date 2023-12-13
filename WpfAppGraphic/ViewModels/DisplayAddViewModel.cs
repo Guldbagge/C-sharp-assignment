@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace WpfAppGraphic.ViewModels;
 
 
-public partial class DisplayAddModel : ObservableObject
+public partial class DisplayAddViewModel : ObservableObject
 {
     private readonly IServiceProvider _sp;
 
-    public DisplayAddModel(IServiceProvider sp)
+    public DisplayAddViewModel(IServiceProvider sp)
     {
         _sp = sp;
     }
@@ -23,6 +23,6 @@ public partial class DisplayAddModel : ObservableObject
     private void NavigateToList()
     {
         var mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayAddModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
     }
 }

@@ -20,9 +20,9 @@ public partial class App : Application
               
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<MainViewModel>();
-                services.AddSingleton<DisplayMainOptionsModel>();
+                services.AddSingleton<DisplayMainOptionsViewModel>();
                 services.AddSingleton<DisplayMainOptions>();
-                services.AddSingleton<DisplayAddModel>();
+                services.AddSingleton<DisplayAddViewModel>();
                 services.AddSingleton<DisplayAdd>();
             })
             .Build();
