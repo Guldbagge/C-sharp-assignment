@@ -20,20 +20,20 @@
         <StackPanel Grid.Row="0" Margin="0,0,0,30">
             <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
             <Label Content="Enter person email"/>
-            <TextBox Text="{Binding CustomerForm.Email}" Padding="2,5" />
+            <TextBox Text="{Binding Person.Email}" Padding="2,5" />
             <Label Content="Enter person first name"/>
-            <TextBox Text="{Binding CustomerForm.FirstName}" Padding="0,5" />
+            <TextBox Text="{Binding Person.FirstName}" Padding="0,5" />
             <Label Content="Enter person last name"/>
-            <TextBox Text="{Binding CustomerForm.LastName}" Padding="0,5" />
+            <TextBox Text="{Binding Person.LastName}" Padding="0,5" />
             <Label Content="Enter person street name"/>
-            <TextBox Text="{Binding CustomerForm.StreetName}" Padding="0,5" />
+            <TextBox Text="{Binding Person.StreetName}" Padding="0,5" />
             <Label Content="Enter person street number"/>
-            <TextBox Text="{Binding CustomerForm.StreetNumber}" Padding="0,5" />
+            <TextBox Text="{Binding Person.StreetNumber}" Padding="0,5" />
             <Label Content="Enter person zip code"/>
-            <TextBox Text="{Binding CustomerForm.ZipCode}" Padding="0,5" />
+            <TextBox Text="{Binding Person.ZipCode}" Padding="0,5" />
             <Label Content="Enter person city"/>
-            <TextBox Text="{Binding CustomerForm.City}" Padding="0,5" />
-            <Button Content="Add Customer" Command="{Binding AddCustomerToListCommand}" Padding="0,5" Margin="0,30" />
+            <TextBox Text="{Binding Person.City}" Padding="0,5" />
+            <Button Content="Add Person" Command="{Binding AddPersonCommand}" Padding="0,5" Margin="0,30" />
         </StackPanel>
 
         <!--<ListView Grid.Row="1" ItemsSource="{Binding CustomerList}" HorizontalContentAlignment="Stretch">
@@ -61,7 +61,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>-->
-
 
     </Grid>
 

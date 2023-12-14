@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using ConsoleApp.Service;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Interface;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +12,8 @@ using System.Threading.Tasks;
 namespace WpfAppGraphic.ViewModels;
 
 public partial class MainViewModel : ObservableObject
+
+
 {
     [ObservableProperty]
     private ObservableObject? _currentViewModel;
@@ -23,4 +28,6 @@ public partial class MainViewModel : ObservableObject
         CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
 
     }
+
+    
 }
