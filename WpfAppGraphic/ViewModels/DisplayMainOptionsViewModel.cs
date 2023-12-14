@@ -19,10 +19,16 @@ public DisplayMainOptionsViewModel(IServiceProvider sp)
     _sp = sp;
 }
 
-[RelayCommand]
-private void NavigateToAdd()
-{
-    var mainViewModel = _sp.GetRequiredService<MainViewModel>();
-    mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayAddViewModel>();
-}
+    [RelayCommand]
+    private void NavigateToAdd()
+    {
+        var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayAddViewModel>();
+    }
+    [RelayCommand]
+    private void NavigateToGetAllPersons()
+    {
+        var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayGetAllPersonsModel>();
+    }
 }

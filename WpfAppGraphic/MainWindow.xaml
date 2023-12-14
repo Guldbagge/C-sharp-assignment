@@ -22,6 +22,11 @@
                     <views:DisplayAdd />
                 </DataTemplate>
 
+                <DataTemplate DataType="{x:Type viewmodels:DisplayGetAllPersonsModel}">
+                    <views:DisplayAdd />
+                </DataTemplate>
+
+
             </ContentControl.Resources>
 
         </ContentControl>
