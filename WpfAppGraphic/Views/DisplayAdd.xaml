@@ -4,11 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppGraphic.Views"
-             
              xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
-            
              d:DataContext="{d:DesignInstance Type=views:DisplayAddViewModel}"
-             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin ="20">
@@ -20,48 +17,20 @@
         <StackPanel Grid.Row="0" Margin="0,0,0,30">
             <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
             <Label Content="Enter person email"/>
-            <TextBox Text="{Binding Person.Email}" Padding="2,5" />
+            <TextBox Text="{Binding Email}" Padding="2,5" />
             <Label Content="Enter person first name"/>
-            <TextBox Text="{Binding Person.FirstName}" Padding="0,5" />
+            <TextBox Text="{Binding FirstName}" Padding="0,5" />
             <Label Content="Enter person last name"/>
-            <TextBox Text="{Binding Person.LastName}" Padding="0,5" />
+            <TextBox Text="{Binding LastName}" Padding="0,5" />
             <Label Content="Enter person street name"/>
-            <TextBox Text="{Binding Person.StreetName}" Padding="0,5" />
+            <TextBox Text="{Binding StreetName}" Padding="0,5" />
             <Label Content="Enter person street number"/>
-            <TextBox Text="{Binding Person.StreetNumber}" Padding="0,5" />
+            <TextBox Text="{Binding StreetNumber}" Padding="0,5" />
             <Label Content="Enter person zip code"/>
-            <TextBox Text="{Binding Person.ZipCode}" Padding="0,5" />
+            <TextBox Text="{Binding ZipCode}" Padding="0,5" />
             <Label Content="Enter person city"/>
-            <TextBox Text="{Binding Person.City}" Padding="0,5" />
+            <TextBox Text="{Binding City}" Padding="0,5" />
             <Button Content="Add Person" Command="{Binding AddPersonCommand}" Padding="0,5" Margin="0,30" />
         </StackPanel>
-
-        <!--<ListView Grid.Row="1" ItemsSource="{Binding CustomerList}" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="2, 5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding CompanyName}" />
-                            <TextBlock Text="{Binding ContactPerson}" FontSize="10"/>
-                        </StackPanel>
-
-                        <Button Command="{Binding DataContext.RemoveCustomerFromListCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                                CommandParameter="{Binding}"
-                                Grid.Column="1"
-                                Content="x"
-                                Width="21"
-                                Height="20" 
-                        />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
-
     </Grid>
-
 </UserControl>
