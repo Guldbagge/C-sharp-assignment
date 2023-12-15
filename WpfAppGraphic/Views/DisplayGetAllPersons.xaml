@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppGraphic.Views"
              
+             d:DataContext="{d:DesignInstance Type=views:DisplayGetAllPersonsModel}"
              xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
           
              
@@ -19,7 +20,7 @@
 
         <StackPanel Grid.Row="0" Margin="0,0,0,30">
             <Label Content="Persons" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
-            
+            <ListBox ItemsSource="{Binding DisplayedPersons}" />
         </StackPanel>
     </Grid>
 </UserControl>

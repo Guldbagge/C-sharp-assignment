@@ -23,7 +23,7 @@
                 </DataTemplate>
 
                 <DataTemplate DataType="{x:Type viewmodels:DisplayGetAllPersonsModel}">
-                    <views:DisplayAdd />
+                    <views:DisplayGetAllPersons />
                 </DataTemplate>
 
 
