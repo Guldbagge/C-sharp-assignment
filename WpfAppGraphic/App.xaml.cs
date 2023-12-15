@@ -28,6 +28,8 @@ public partial class App : Application
                 services.AddSingleton<DisplayGetAllPersons>();
                 services.AddSingleton<DisplayGetPersonDetailsModel>();
                 services.AddSingleton<DisplayGetPersonDetails>();
+                services.AddSingleton<DisplayRemovePersonModel>();
+                services.AddSingleton<DisplayRemovePerson>();
 
             })
             .Build();

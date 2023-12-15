@@ -30,6 +30,10 @@
                     <views:DisplayGetPersonDetails />
                 </DataTemplate>
 
+                <DataTemplate DataType="{x:Type viewmodels:DisplayRemovePersonModel}">
+                    <views:DisplayRemovePerson />
+                </DataTemplate>
+
 
             </ContentControl.Resources>
 

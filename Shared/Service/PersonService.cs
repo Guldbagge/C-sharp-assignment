@@ -60,11 +60,12 @@ namespace ConsoleApp.Service
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine($"Exception: {ex.GetType().Name} - Message: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
 
             return false;
         }
+
 
         public void UpdatePerson(Person updatedPerson)
         {

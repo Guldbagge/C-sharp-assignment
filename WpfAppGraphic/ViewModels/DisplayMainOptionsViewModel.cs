@@ -26,6 +26,14 @@ public DisplayMainOptionsViewModel(IServiceProvider sp)
         var mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayAddViewModel>();
     }
+
+    [RelayCommand]
+    private void NavigateToRemovePerson()
+    {
+        var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayRemovePersonModel>();
+    }
+
     [RelayCommand]
     private void NavigateToGetAllPersons()
     {
@@ -39,6 +47,7 @@ public DisplayMainOptionsViewModel(IServiceProvider sp)
         var mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayGetPersonDetailsModel>();
     }
+ 
 
    
 }

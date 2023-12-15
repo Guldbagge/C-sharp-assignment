@@ -15,22 +15,24 @@ namespace WpfAppGraphic.ViewModels
         public DisplayGetPersonDetailsModel(IServiceProvider sp)
         {
             _sp = sp ?? throw new ArgumentNullException(nameof(sp));
-            _personService = new PersonService(); // Kan injiceras genom konstruktorn om den är registrerad i tjänsterna.
+            _personService = new PersonService();
             NavigateToListCommand = new RelayCommand(NavigateToList);
             GetPersonDetailsCommand = new RelayCommand(GetPersonDetails);
+            _email = string.Empty; 
+            _personDetails = string.Empty; 
         }
 
         public ICommand NavigateToListCommand { get; }
         public ICommand GetPersonDetailsCommand { get; }
 
-        private string _email;
+        private string _email = string.Empty;
         public string Email
         {
             get => _email;
             set => SetProperty(ref _email, value);
         }
 
-        private string _personDetails;
+        private string _personDetails = string.Empty;
         public string PersonDetails
         {
             get => _personDetails;
