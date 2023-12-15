@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using WpfAppGraphic.ViewModels;
 
 namespace WpfAppGraphic.ViewModels;
@@ -31,4 +32,13 @@ public DisplayMainOptionsViewModel(IServiceProvider sp)
         var mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayGetAllPersonsModel>();
     }
+
+    [RelayCommand]
+    private void NavigateToGetPersonDetails()
+    {
+        var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayGetPersonDetailsModel>();
+    }
+
+   
 }

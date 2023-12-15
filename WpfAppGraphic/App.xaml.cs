@@ -26,6 +26,9 @@ public partial class App : Application
                 services.AddSingleton<DisplayAdd>();
                 services.AddSingleton<DisplayGetAllPersonsModel>();
                 services.AddSingleton<DisplayGetAllPersons>();
+                services.AddSingleton<DisplayGetPersonDetailsModel>();
+                services.AddSingleton<DisplayGetPersonDetails>();
+
             })
             .Build();
     }

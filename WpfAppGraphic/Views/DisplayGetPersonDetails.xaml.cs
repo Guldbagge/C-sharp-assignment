@@ -12,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfAppGraphic.ViewModels;
 
 namespace WpfAppGraphic.Views
 {
-    public partial class DisplayGetAllPersons : UserControl
+    /// <summary>
+    /// Interaction logic for DisplayGetPersonDetails.xaml
+    /// </summary>
+    public partial class DisplayGetPersonDetails : UserControl
     {
-        private readonly DisplayGetAllPersonsModel _viewModel;
-
-        public DisplayGetAllPersons()
+        public DisplayGetPersonDetails()
         {
             InitializeComponent();
-            _viewModel = new DisplayGetAllPersonsModel();
-            DataContext = _viewModel;
-
-            Loaded += async (_, __) => await _viewModel.GetAllPersonsAsync();
         }
     }
 }
