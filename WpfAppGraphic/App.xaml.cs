@@ -30,6 +30,8 @@ public partial class App : Application
                 services.AddSingleton<DisplayGetPersonDetails>();
                 services.AddSingleton<DisplayRemovePersonModel>();
                 services.AddSingleton<DisplayRemovePerson>();
+                services.AddSingleton<DisplayUpdatePersonModel>();
+                services.AddSingleton<DisplayUpdatePerson>();
 
             })
             .Build();

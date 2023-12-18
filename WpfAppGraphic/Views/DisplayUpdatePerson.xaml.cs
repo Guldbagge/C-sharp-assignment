@@ -15,10 +15,12 @@ using System.Windows.Shapes;
 
 namespace WpfAppGraphic.Views
 {
-
-    public partial class DisplayAdd : UserControl
+    /// <summary>
+    /// Interaction logic for DisplayUpdatePerson.xaml
+    /// </summary>
+    public partial class DisplayUpdatePerson : UserControl
     {
-        public DisplayAdd()
+        public DisplayUpdatePerson()
         {
             InitializeComponent();
         }

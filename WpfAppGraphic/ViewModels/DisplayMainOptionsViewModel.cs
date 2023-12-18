@@ -47,7 +47,14 @@ public DisplayMainOptionsViewModel(IServiceProvider sp)
         var mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayGetPersonDetailsModel>();
     }
- 
 
-   
+    [RelayCommand]
+    private void NavigateToUpdatePerson()
+    {
+        var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayUpdatePersonModel>();
+    }
+
+
+
 }

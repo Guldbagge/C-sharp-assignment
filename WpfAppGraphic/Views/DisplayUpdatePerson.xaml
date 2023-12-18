@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="WpfAppGraphic.Views.DisplayUpdatePerson"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAppGraphic.Views"
+             
+              xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
+               d:DataContext="{d:DesignInstance Type=views:DisplayUpdatePersonModel}"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
+
+    </Grid>
+</UserControl>
