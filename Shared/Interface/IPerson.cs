@@ -37,4 +37,10 @@ public interface IPerson
     /// Gets or sets the city.
     /// </summary>
     string City { get; set; }
+
+    /// <summary>
+    /// Gets or sets the phonenumber.
+    /// </summary> 
+
+    int PhoneNumber { get; set; }
 }

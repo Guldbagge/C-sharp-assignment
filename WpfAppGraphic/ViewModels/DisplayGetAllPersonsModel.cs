@@ -9,6 +9,7 @@ namespace WpfAppGraphic.ViewModels
 {
     public class DisplayGetAllPersonsModel : ObservableObject
     {
+
         private readonly PersonService _personService = new();
         public ObservableCollection<string> DisplayedPersons { get; } = new ObservableCollection<string>();
 

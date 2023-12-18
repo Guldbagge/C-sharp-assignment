@@ -10,14 +10,15 @@
               
               mc:Ignorable="d" 
               d:DesignHeight="450" d:DesignWidth="800">
-     <Grid Margin ="20">
+    <Grid Background="#007EA7">
          <Grid.RowDefinitions>
              <RowDefinition Height="auto"/>
              <RowDefinition Height="*"/>
          </Grid.RowDefinitions>
 
-         <StackPanel Grid.Row="0" Margin="0,0,0,30">
-             <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
+         <StackPanel Grid.Row="0" Margin="30,0,0,30">
+            <TextBlock Text="Add Diver" FontSize="28" FontWeight="Bold" Foreground="White" Margin="0,0,0,30"/>
+            <Button Content="Home" Command="{Binding NavigateToListCommand}" Width="200" Height="40" Margin="0,10" Background="#03A9F4" Foreground="White"  BorderThickness="0"/>
              <Label Content="Enter person email"/>
              <TextBox Text="{Binding Email}" Padding="2,5" />
              <Label Content="Enter person first name"/>
@@ -32,7 +33,10 @@
              <TextBox Text="{Binding ZipCode}" Padding="0,5" />
              <Label Content="Enter person city"/>
              <TextBox Text="{Binding City}" Padding="0,5" />
-             <Button Content="Add Person" Command="{Binding AddPersonCommand}" Padding="0,5" Margin="0,30" />
-         </StackPanel>
+            <Label Content="Enter person phone number"/>
+            <TextBox Text="{Binding PhoneNumber}" Padding="0,5" />    
+            <Button Content="Add Person" Command="{Binding AddPersonCommand}" Width="200" Height="40" Margin="0,10" Background="#009688" Foreground="White" BorderThickness="0"/>
+            <Label Content="{Binding Message}" Foreground="White" Padding="2,5"/>
+        </StackPanel>
      </Grid>
  </UserControl>

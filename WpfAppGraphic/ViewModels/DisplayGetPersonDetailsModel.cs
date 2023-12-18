@@ -71,6 +71,7 @@ namespace WpfAppGraphic.ViewModels
                             $"\tStreet Number: {person.StreetNumber}\n" +
                             $"\tZip Code: {person.ZipCode}\n" +
                             $"\tCity: {person.City}\n" +
+                            $"Phone Number: {person.PhoneNumber}\n" +
                             $"----------------------------------\n\n";
         }
     }

@@ -85,6 +85,7 @@ namespace ConsoleApp.Service
                         existingPerson.StreetNumber = updatedPerson.StreetNumber;
                         existingPerson.ZipCode = updatedPerson.ZipCode;
                         existingPerson.City = updatedPerson.City;
+                        existingPerson.PhoneNumber = updatedPerson.PhoneNumber;
 
                         SavePersonsToJsonFile();
                     }

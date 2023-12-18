@@ -7,4 +7,5 @@
     public int StreetNumber { get; set; }
     public int ZipCode { get; set; }
     public string City { get; set; } = "";
+    public int PhoneNumber { get; set; }
 }

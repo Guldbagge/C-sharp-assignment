@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfAppGraphic.Views"
-             
-              xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
-               d:DataContext="{d:DesignInstance Type=views:DisplayUpdatePersonModel}"
-             
+             xmlns:views="clr-namespace:WpfAppGraphic.ViewModels"
+             d:DataContext="{d:DesignInstance Type=views:DisplayUpdatePersonModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Home" Command="{Binding NavigateToListCommand}" Padding="2,5"/>
 
+    <Grid Background="#007EA7">
+        <TextBlock Text="Update Diver" FontSize="28" FontWeight="Bold" Foreground="White" Margin="30,30,0,30"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50">
+           
+            <Button Content="HOME" Command="{Binding NavigateToListCommand}" Width="200" Height="40" Margin="0,10" Background="#009688" Foreground="White" BorderThickness="0"/>
+            <Button Content="Start to Update Diver" Command="{Binding UpdatePersonCommand}" Width="200" Height="40" Margin="0,10" Background="#03A9F4" Foreground="White" BorderThickness="0"/>
+        </StackPanel>
     </Grid>
 </UserControl>
