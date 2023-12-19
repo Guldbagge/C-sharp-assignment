@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ConsoleApp.Service;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace WpfAppGraphic.ViewModels
 {
     public class DisplayGetAllPersonsModel : ObservableObject
+   
     {
 
         private readonly PersonService _personService = new();
@@ -23,5 +25,8 @@ namespace WpfAppGraphic.ViewModels
                 DisplayedPersons.Add("----------------------------------");
             }
         }
+
     }
+
+ 
 }

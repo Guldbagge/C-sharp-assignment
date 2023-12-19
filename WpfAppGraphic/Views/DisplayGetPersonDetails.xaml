@@ -16,17 +16,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="30,0,30,30">
+        <StackPanel Grid.Row="0" Margin="30,30,30,30">
             <TextBlock Text="Divers Details" FontSize="28" FontWeight="Bold" Foreground="White" Margin="0,0,0,30"/>
             <Button Content="Home" Command="{Binding NavigateToListCommand}" Width="200" Height="40" Margin="0,10" Background="#03A9F4" Foreground="White"  BorderThickness="0"/>
-            <Label Content="Enter person email"/>
+            <Label Content="Enter person email" Foreground="White"/>
             <TextBox Text="{Binding Email}" Padding="2,5" />
-            <Button Content="Get person details" Command="{Binding GetPersonDetailsCommand}" Width="200" Height="40" Margin="0,50" Background="#4CAF50" Foreground="White" BorderThickness="0"/>
+            <Button Content="Get Divers Details" Command="{Binding GetPersonDetailsCommand}" Width="200" Height="40" Margin="0,50" Background="#4CAF50" Foreground="White" BorderThickness="0"/>
 
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="30,0,0,30">
-            <Label Content="Person details"/>
+            <Label Content="Divers details" Foreground="White"/>
             <TextBlock Text="{Binding PersonDetails}" Padding="2,5" />
         </StackPanel>
         

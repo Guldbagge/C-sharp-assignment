@@ -36,7 +36,6 @@ public partial class App : Application
             })
             .Build();
     }
-
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);

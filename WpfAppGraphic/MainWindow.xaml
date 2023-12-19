@@ -38,7 +38,6 @@
                     <views:DisplayUpdatePerson />
                 </DataTemplate>
 
-
             </ContentControl.Resources>
 
         </ContentControl>

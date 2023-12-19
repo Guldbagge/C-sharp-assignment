@@ -2,9 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using ConsoleApp.Service;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace WpfAppGraphic.ViewModels
 {
@@ -12,7 +9,6 @@ namespace WpfAppGraphic.ViewModels
     {
         private readonly PersonService _personService = new();
         private readonly IServiceProvider _sp = sp ?? throw new ArgumentNullException(nameof(sp));
-
 
         public string Email { get; set; } = "";
         public string FirstName { get; set; } = "";
@@ -57,7 +53,6 @@ namespace WpfAppGraphic.ViewModels
                 Message = $"Diver {newPerson.FirstName} {newPerson.LastName} added successfully.";
             }
         }
-
         private static Person GetPersonDetailsFromUser(string email, string firstName, string lastName, string streetName, string streetNumber, string zipCode, string city, string phoneNumber)
         {
             var person = new Person();
@@ -76,7 +71,6 @@ namespace WpfAppGraphic.ViewModels
                     person.PhoneNumber = phone;
                 }
             }
-
             return person;
         }
 

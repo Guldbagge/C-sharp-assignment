@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using ConsoleApp.Service;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Windows.Input;
 
 namespace WpfAppGraphic.ViewModels
