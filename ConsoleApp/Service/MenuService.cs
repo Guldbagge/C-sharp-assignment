@@ -125,6 +125,9 @@ namespace ConsoleApp.Service
 
             Console.WriteLine("Enter person city:");
             person.City = Console.ReadLine()!;
+
+            Console.WriteLine("Enter person phone number:");
+            person.PhoneNumber = Convert.ToInt32(Console.ReadLine()!);
         }
 
         private void RemovePerson()
@@ -201,6 +204,9 @@ namespace ConsoleApp.Service
             Console.WriteLine("Enter person city:");
             person.City = Console.ReadLine()!;
 
+            Console.WriteLine("Enter person phone number:");
+            person.PhoneNumber = Convert.ToInt32(Console.ReadLine()!);
+
             return person;
         }
 
@@ -215,6 +221,7 @@ namespace ConsoleApp.Service
             Console.WriteLine($"\tStreet Number: {person.StreetNumber}");
             Console.WriteLine($"\tZip Code: {person.ZipCode}");
             Console.WriteLine($"\tCity: {person.City}");
+            Console.WriteLine($"Phone Number: {person.PhoneNumber}");
             Console.WriteLine("----------------------------------");
             Console.WriteLine("\n");
         }

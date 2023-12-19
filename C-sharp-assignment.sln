@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.Tests", "ConsoleApp.Tests\ConsoleApp.Tests.csproj", "{F7FBAE9C-7B05-443A-817A-84EA8CD3AB26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{1B22B50E-FBC3-407F-B36D-BC92DA523146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{1B22B50E-FBC3-407F-B36D-BC92DA523146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppGraphic", "WpfAppGraphic\WpfAppGraphic.csproj", "{086E3C7F-9B2B-4B01-B06E-E86684107ABA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{1B22B50E-FBC3-407F-B36D-BC92DA523146}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B22B50E-FBC3-407F-B36D-BC92DA523146}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B22B50E-FBC3-407F-B36D-BC92DA523146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086E3C7F-9B2B-4B01-B06E-E86684107ABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086E3C7F-9B2B-4B01-B06E-E86684107ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086E3C7F-9B2B-4B01-B06E-E86684107ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086E3C7F-9B2B-4B01-B06E-E86684107ABA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -60,11 +60,12 @@ namespace ConsoleApp.Service
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine($"Exception: {ex.GetType().Name} - Message: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
 
             return false;
         }
+
 
         public void UpdatePerson(Person updatedPerson)
         {
@@ -84,6 +85,7 @@ namespace ConsoleApp.Service
                         existingPerson.StreetNumber = updatedPerson.StreetNumber;
                         existingPerson.ZipCode = updatedPerson.ZipCode;
                         existingPerson.City = updatedPerson.City;
+                        existingPerson.PhoneNumber = updatedPerson.PhoneNumber;
 
                         SavePersonsToJsonFile();
                     }
