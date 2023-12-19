@@ -10,10 +10,10 @@ namespace WpfAppGraphic.Views
         public DisplayGetAllPersons()
         {
             InitializeComponent();
-            _viewModel = new DisplayGetAllPersonsModel();
-            DataContext = _viewModel;
+            //_viewModel = new DisplayGetAllPersonsModel();
+            //DataContext = _viewModel;
 
-            Loaded += async (_, __) => await _viewModel.GetAllPersonsAsync();
+            //Loaded += async (_, __) => await _viewModel.GetAllPersonsAsync();
         }
     }
 }

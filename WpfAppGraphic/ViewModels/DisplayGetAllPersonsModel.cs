@@ -4,29 +4,41 @@ using ConsoleApp.Service;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WpfAppGraphic.ViewModels
 {
     public class DisplayGetAllPersonsModel : ObservableObject
-   
     {
-
         private readonly PersonService _personService = new();
         public ObservableCollection<string> DisplayedPersons { get; } = new ObservableCollection<string>();
 
-        public async Task GetAllPersonsAsync()
+        private readonly IServiceProvider _sp;
+
+        public ICommand NavigateToListCommand { get; }
+
+        public DisplayGetAllPersonsModel(IServiceProvider sp)
         {
-            var persons = await Task.Run(() => _personService.GetPersons());
+            _sp = sp ?? throw new ArgumentNullException(nameof(sp));
+            NavigateToListCommand = new RelayCommand(NavigateToList);
+
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            var persons = _personService.GetPersons();
             DisplayedPersons.Clear();
             foreach (var person in persons)
             {
                 DisplayedPersons.Add($"{person.FirstName} {person.LastName}");
-                DisplayedPersons.Add("----------------------------------");
             }
         }
 
+        private void NavigateToList()
+        {
+            var mainViewModel = _sp.GetRequiredService<MainViewModel>();
+            mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
+        }
     }
-
- 
 }
