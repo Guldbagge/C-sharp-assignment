@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{F6B7BAB9-D556-43CE-98D3-6E58C8AA5DEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.Tests", "ConsoleApp.Tests\ConsoleApp.Tests.csproj", "{F7FBAE9C-7B05-443A-817A-84EA8CD3AB26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp.Tests", "ConsoleApp.Tests\TestApp.Tests.csproj", "{F7FBAE9C-7B05-443A-817A-84EA8CD3AB26}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{1B22B50E-FBC3-407F-B36D-BC92DA523146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppGraphic", "WpfAppGraphic\WpfAppGraphic.csproj", "{086E3C7F-9B2B-4B01-B06E-E86684107ABA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAppGraphic", "WpfAppGraphic\WpfAppGraphic.csproj", "{086E3C7F-9B2B-4B01-B06E-E86684107ABA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
