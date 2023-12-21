@@ -40,6 +40,7 @@ namespace WpfAppGraphic.ViewModels
 
         private void NavigateToList()
         {
+            Email = string.Empty;
             var mainViewModel = _sp.GetRequiredService<MainViewModel>();
             mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
         }

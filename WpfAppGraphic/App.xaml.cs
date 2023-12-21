@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ConsoleApp.Service;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Configuration;
 using System.Data;
@@ -24,14 +25,16 @@ public partial class App : Application
                 services.AddSingleton<DisplayMainOptions>();
                 services.AddSingleton<DisplayAddViewModel>();
                 services.AddSingleton<DisplayAdd>();
-                services.AddSingleton<DisplayGetAllPersonsModel>();
-                services.AddSingleton<DisplayGetAllPersons>();
+                services.AddTransient<DisplayGetAllPersonsModel>();
+                services.AddTransient<DisplayGetAllPersons>();
                 services.AddSingleton<DisplayGetPersonDetailsModel>();
                 services.AddSingleton<DisplayGetPersonDetails>();
-                services.AddSingleton<DisplayRemovePersonModel>();
-                services.AddSingleton<DisplayRemovePerson>();
+                services.AddTransient<DisplayRemovePersonModel>();
+                services.AddTransient<DisplayRemovePerson>();
                 services.AddSingleton<DisplayUpdatePersonModel>();
                 services.AddSingleton<DisplayUpdatePerson>();
+                services.AddTransient<PersonService>();
+
 
             })
             .Build();

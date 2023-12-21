@@ -10,10 +10,8 @@ namespace WpfAppGraphic.ViewModels
 {
     public class DisplayGetAllPersonsModel : ObservableObject
     {
-        private readonly PersonService _personService = new();
-        public ObservableCollection<string> DisplayedPersons { get; } = new ObservableCollection<string>();
-
         private readonly IServiceProvider _sp;
+        public ObservableCollection<string> DisplayedPersons { get; } = new ObservableCollection<string>();
 
         public ICommand NavigateToListCommand { get; }
 
@@ -22,12 +20,14 @@ namespace WpfAppGraphic.ViewModels
             _sp = sp ?? throw new ArgumentNullException(nameof(sp));
             NavigateToListCommand = new RelayCommand(NavigateToList);
 
-            RefreshData();
+            GetAllPerson();
         }
 
-        private void RefreshData()
+        private void GetAllPerson()
         {
-            var persons = _personService.GetPersons();
+            var personService = _sp.GetRequiredService<PersonService>();
+            var persons = personService.GetPersons();
+
             DisplayedPersons.Clear();
             foreach (var person in persons)
             {

@@ -14,7 +14,7 @@ namespace WpfAppGraphic.ViewModels
         public DisplayRemovePersonModel(IServiceProvider sp)
         {
             _sp = sp ?? throw new ArgumentNullException(nameof(sp));
-            _personService = new PersonService();
+            _personService = _sp.GetRequiredService<PersonService>();
             NavigateToListCommand = new RelayCommand(NavigateToList);
             RemovePersonCommand = new RelayCommand(RemovePerson);
         }
@@ -38,6 +38,7 @@ namespace WpfAppGraphic.ViewModels
 
         private void NavigateToList()
         {
+            Email = string.Empty;
             var mainViewModel = _sp.GetRequiredService<MainViewModel>();
             mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
         }
