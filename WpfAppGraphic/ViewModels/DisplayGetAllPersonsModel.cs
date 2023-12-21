@@ -20,12 +20,11 @@ namespace WpfAppGraphic.ViewModels
             _sp = sp ?? throw new ArgumentNullException(nameof(sp));
             NavigateToListCommand = new RelayCommand(NavigateToList);
 
-            RefreshData();
+            GetAllPerson();
         }
 
-        private void RefreshData()
+        private void GetAllPerson()
         {
-            // Hämta PersonService från ServiceProvider
             var personService = _sp.GetRequiredService<PersonService>();
             var persons = personService.GetPersons();
 

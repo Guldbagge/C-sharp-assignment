@@ -2,13 +2,19 @@
 using CommunityToolkit.Mvvm.Input;
 using ConsoleApp.Service;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace WpfAppGraphic.ViewModels
 {
-    public partial class DisplayAddViewModel(IServiceProvider sp) : ObservableObject
+    public partial class DisplayAddViewModel : ObservableObject
     {
         private readonly PersonService _personService = new();
-        private readonly IServiceProvider _sp = sp ?? throw new ArgumentNullException(nameof(sp));
+        private readonly IServiceProvider _sp;
+
+        public DisplayAddViewModel(IServiceProvider sp)
+        {
+            _sp = sp ?? throw new ArgumentNullException(nameof(sp));
+        }
 
         public string Email { get; set; } = "";
         public string FirstName { get; set; } = "";
@@ -28,6 +34,8 @@ namespace WpfAppGraphic.ViewModels
         [RelayCommand]
         private void NavigateToList()
         {
+            ClearFields();
+
             var mainViewModel = _sp.GetRequiredService<MainViewModel>();
             mainViewModel.CurrentViewModel = _sp.GetRequiredService<DisplayMainOptionsViewModel>();
         }
@@ -42,9 +50,8 @@ namespace WpfAppGraphic.ViewModels
                 StreetName,
                 StreetNumber,
                 ZipCode,
-                City, 
+                City,
                 PhoneNumber
-
             );
 
             if (newPerson != null)
@@ -53,6 +60,7 @@ namespace WpfAppGraphic.ViewModels
                 Message = $"Diver {newPerson.FirstName} {newPerson.LastName} added successfully.";
             }
         }
+
         private static Person GetPersonDetailsFromUser(string email, string firstName, string lastName, string streetName, string streetNumber, string zipCode, string city, string phoneNumber)
         {
             var person = new Person();
@@ -74,5 +82,17 @@ namespace WpfAppGraphic.ViewModels
             return person;
         }
 
+        private void ClearFields()
+        {
+            Email = "";
+            FirstName = "";
+            LastName = "";
+            StreetName = "";
+            StreetNumber = "";
+            ZipCode = "";
+            City = "";
+            PhoneNumber = "";
+            Message = "";
+        }
     }
 }
