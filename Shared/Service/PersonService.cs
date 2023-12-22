@@ -1,5 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using Shared.Interface;
 using Shared.Service;
 
@@ -7,7 +11,7 @@ namespace ConsoleApp.Service
 {
     public class PersonService : IPersonService
     {
-        private readonly FileService _fileService = new FileService(@"C:\Education\C-sharp-assignment\content.json");
+        private readonly IFileService _fileService = new FileService(@"C:\Education\C-sharp-assignment\content.json");
         private List<Person> _persons;
 
         public List<Person> GetPersons() => _persons;
@@ -65,7 +69,6 @@ namespace ConsoleApp.Service
 
             return false;
         }
-
 
         public void UpdatePerson(Person updatedPerson)
         {
